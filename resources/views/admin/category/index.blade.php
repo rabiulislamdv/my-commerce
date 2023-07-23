@@ -7,7 +7,9 @@
             <div class="card-body">
                 <h4 class="card-title">Add Category Form</h4>
                 <hr>
-                <form class="form-horizontal p-t-20">
+                <h4 class="text-success text-center"> {{Session('msg')}}</h4>
+                <form class="form-horizontal p-t-20" action="{{route('category.new')}}" method="post" enctype="multipart/form-data">
+                   @csrf
                     <div class="form-group row">
                         <label for="exampleInputuname3" class="col-sm-3 control-label">Category Name <span class="text-danger">*</span></label>
                         <div class="col-sm-9">
@@ -18,14 +20,14 @@
                     <div class="form-group row">
                         <label for="exampleInputEmail3" class="col-sm-3 control-label">Category Description <span class="text-danger">*</span></label>
                         <div class="col-sm-9">
-                            <textarea type="email" class="form-control" name="description " id="exampleInputEmail3" placeholder="Category Description "></textarea>
+                            <textarea type="text" class="form-control" name="description" id="exampleInputEmail3" placeholder="Category Description "></textarea>
 
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="form-label col-sm-3 control-label" for="web">Category Image</label>
                         <div class="col-sm-9">
-                            <input type="file" id="input-file-now" class="dropify" />
+                            <input type="file" name="image" id="input-file-now" class="dropify" />
 
                         </div>
                     </div>

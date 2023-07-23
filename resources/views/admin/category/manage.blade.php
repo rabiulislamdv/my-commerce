@@ -2,7 +2,7 @@
 @extends('admin.master')
 
 @section('body')
-    <div class="row">
+    <div class="row mt-3">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
@@ -21,22 +21,24 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>
-                                    <a href="" class="btn btn-success btn-sm">
-                                        <i class="ti-pencil-alt"></i>
-                                    </a>
-                                    <a href="" class="btn btn-danger btn-sm">
-                                        <i class="ti-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                            @foreach($categories as $category)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$category->name}}</td>
+                                    <td>{{$category->description}}</td>
 
+                                    <td><img src="{{asset($category->image)}}" alt="{{$category->name}}" height="50" width="50"></td>
+                                    <td>{{$category->status== 1? 'Published': 'Unpublished'}}</td>
+                                    <td>
+                                        <a href="{{'category.edit', ['id'=>$category->id]}}" class="btn btn-success btn-sm">
+                                            <i class="ti-pencil-alt"></i>
+                                        </a>
+                                        <a href="{{'category.delete', ['id'=>$category->id]}}" class="btn btn-danger btn-sm">
+                                            <i class="ti-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

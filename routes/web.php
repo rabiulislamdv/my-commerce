@@ -29,6 +29,11 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
     Route::get('/category/add', [CategoryController::class, 'index'])->name('category.add');
-    Route::get('/category/manage', [CategoryController::class, 'manage'])->name('category.manage');
+    Route::post('/category/new', [CategoryController::class, 'create'])->name('category.new');
+    Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
+    Route::get('/category/delete/{id}', [CategoryController::class, 'delete'])->name('category.delete');
+
 });
